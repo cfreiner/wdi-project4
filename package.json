@@ -1,0 +1,22 @@
+{
+  "name": "wdi-project4",
+  "version": "1.0.0",
+  "description": "GA WDI Project 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cfreiner/wdi-project4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cfreiner/wdi-project4/issues"
+  },
+  "homepage": "https://github.com/cfreiner/wdi-project4#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
