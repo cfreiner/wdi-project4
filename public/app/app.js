@@ -1,7 +1,4 @@
 var app = angular.module('P4', ['ngRoute', 'WikiCtrls']);
-app.controller('TestCtrl', ['$scope', function($scope) {
-  console.log('Angular up and running.');
-}]);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.when('/', {

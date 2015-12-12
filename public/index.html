@@ -7,10 +7,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-resource.min.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
   </head>
-  <body ng-controller="TestCtrl">
-    <h1>Hello World {{2+2}}</h1>
-    <form>
-      <input type="text">
-    </form>
+  <body>
+    <div>
+      <ng-view></ng-view>
+    </div>
   </body>
 </html>
