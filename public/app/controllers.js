@@ -1,8 +1,8 @@
 angular.module('WikiCtrls', ['WikiServices'])
-  .controller('SearchCtrl', ['$scope','Article', function($scope, Article) {
+  .controller('SearchCtrl', ['$scope', 'Article', function($scope, Article) {
     $scope.results = '';
     $scope.search = function(q) {
-      Article.query({q:q}, function(data) {
+      Article.get({q:q}, function(data) {
         $scope.results = data;
       });
     };
