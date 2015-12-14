@@ -1,4 +1,17 @@
 angular.module('D3Directives', ['D3Services'])
+  .directive('circlePack', ['d3', '$window', function(d3, $window) {
+    return {
+      restrict: 'E',
+      scope: {
+        data: '='
+      },
+      link: function(scope, element, attrs) {
+        d3.d3().then(function(d3) {
+
+        });
+      }
+    };
+  }])
   .directive('bar', ['d3', '$window', function(d3, $window) {
     return {
       restrict: 'E',

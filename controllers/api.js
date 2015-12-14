@@ -14,11 +14,7 @@ router.get('/search', function(req, res) {
   });
 });
 
-router.get('/test', function(req, res) {
-  var s = processSentiment('Hello hello good Good bad bad bad Bad evil Evil happy');
-  res.send(s);
-});
-
+//Pull just the content of the Wikipedia page
 function getWikiText(wikiJSON) {
   result = '';
   var pages = wikiJSON.query.pages;
@@ -28,6 +24,7 @@ function getWikiText(wikiJSON) {
   return result;
 }
 
+//Return an object of work frequencies
 function processSentiment(text) {
   var analyzed = sentiment(text);
   var output = {
@@ -40,6 +37,8 @@ function processSentiment(text) {
   return output;
 }
 
+//Tally the frequencies of an array of words.
+//Package them into WordNode objects
 function addWords(inputArr, outputArr, valence) {
   for(var i = 0; i < inputArr.length; i++) {
     var found = false;
@@ -56,6 +55,7 @@ function addWords(inputArr, outputArr, valence) {
   }
 }
 
+//Class for storing words and frequencies
 function WordNode(word, valence) {
   this.word = word;
   this.valence = valence;
