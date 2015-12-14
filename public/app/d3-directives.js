@@ -23,12 +23,17 @@ angular.module('D3Directives', ['D3Services'])
             scope.render(scope.data);
           });
 
+          // Watch for data, re-render on change
+          scope.$watchCollection('data', function(newVals, oldVals) {
+            scope.render(scope.data);
+          });
+
           scope.render = function(data) {
 
             //Clear the existing SVG
             svg.selectAll('*').remove();
 
-            var diameter = window.innerWidth/2;
+            var diameter = window.innerWidth * 0.75;
 
             //Create bubble chart layout
             var bubble = d3.layout.pack()
@@ -46,7 +51,10 @@ angular.module('D3Directives', ['D3Services'])
               .enter()
               .append("g")
               .attr("class", "node")
-              .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+              .attr("transform", function(d) {
+                console.log('Coords:', d.x, d.y);
+                return "translate(" + d.x + "," + d.y + ")";
+              });
 
             node.append("title")
               .text(function(d) { return d.word; });
