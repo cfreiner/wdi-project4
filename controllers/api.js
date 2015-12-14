@@ -8,7 +8,8 @@ var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop
 router.get('/search', function(req, res) {
   request(url + req.query.q, function(err, response, body) {
     if(!err && response.statusCode == 200) {
-      res.send(body);
+      var text = getWikiText(JSON.parse(body));
+      res.send(processSentiment(text));
     }
   });
 });
@@ -17,6 +18,15 @@ router.get('/test', function(req, res) {
   var s = processSentiment('Hello hello good Good bad bad bad Bad evil Evil happy');
   res.send(s);
 });
+
+function getWikiText(wikiJSON) {
+  result = '';
+  var pages = wikiJSON.query.pages;
+  for(var key in pages) {
+    result += pages[key].revisions[0]['*'];
+  }
+  return result;
+}
 
 function processSentiment(text) {
   var analyzed = sentiment(text);
