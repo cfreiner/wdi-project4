@@ -1,5 +1,6 @@
 circle {
-  fill-opacity: .25;
+  fill: white;
+  fill-opacity: .75;
   stroke: rgb(31, 119, 180);
   stroke-width: 1px;
 }
