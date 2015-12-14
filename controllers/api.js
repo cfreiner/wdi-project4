@@ -44,7 +44,7 @@ function addWords(inputArr, outputArr, valence) {
     var found = false;
     for(var j = 0; j < outputArr.length; j++) {
       if(inputArr[i] === outputArr[j].word) {
-        outputArr[j].frequency += 1;
+        outputArr[j].value += 1;
         found = true;
         break;
       }
@@ -59,7 +59,7 @@ function addWords(inputArr, outputArr, valence) {
 function WordNode(word, valence) {
   this.word = word;
   this.valence = valence;
-  this.frequency = 1;
+  this.value = 1;
 }
 
 module.exports = router;
