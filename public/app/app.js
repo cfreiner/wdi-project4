@@ -5,6 +5,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: '/app/views/search.html',
     controller: 'SearchCtrl'
   })
+  .when('/compiled', {
+    templateUrl: '/app/views/compiled.html',
+    controller: 'CompiledCtrl'
+  })
   .otherwise({
     templateUrl: '/app/views/404.html'
   });
