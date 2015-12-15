@@ -99,24 +99,25 @@ router.get('/search', function(req, res) {
     }
   });
 
-  //Helper function to tally the frequencies of an array of words.
-  //Packages them into WordNode objects. Doesn't touch the DB.
-  function addWords(inputArr, outputArr, valence) {
-    for(var i = 0; i < inputArr.length; i++) {
-      var found = false;
-      for(var j = 0; j < outputArr.length; j++) {
-        if(inputArr[i] === outputArr[j].word) {
-          outputArr[j].value += 1;
-          found = true;
-          break;
-        }
-      }
-      if(!found) {
-        outputArr.push(new WordNode(inputArr[i], valence));
+});
+
+//Helper function to tally the frequencies of an array of words.
+//Packages them into WordNode objects. Doesn't touch the DB.
+function addWords(inputArr, outputArr, valence) {
+  for(var i = 0; i < inputArr.length; i++) {
+    var found = false;
+    for(var j = 0; j < outputArr.length; j++) {
+      if(inputArr[i] === outputArr[j].word) {
+        outputArr[j].value += 1;
+        found = true;
+        break;
       }
     }
+    if(!found) {
+      outputArr.push(new WordNode(inputArr[i], valence));
+    }
   }
-});
+}
 
 //Return an object of word frequencies
 //Takes output from Sentiment module
