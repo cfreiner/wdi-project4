@@ -45,11 +45,21 @@ router.get('/search', function(req, res) {
   request(url + req.query.q, function(err, response, body) {
     if(!err && response.statusCode == 200) {
       var text = getWikiText(JSON.parse(body));
-      var processed = processSentiment(text);
+      var analyzed = sentiment(text);
+      var processed = processSentiment(analyzed);
+      var pos = analyzed.positive.map(function(item) {
+        return new WordNode(item, 'positive');
+      });
+      var neg = analyzed.negative.map(function(item) {
+        return new WordNode(item, 'negative');
+      });
+      var toStore = pos.concat(neg);
 
-      async.eachSeries(processed.words, function(item, callback) {
+      //Process the words in sequence and store them in the database if necessary
+      async.eachSeries(toStore, function(item, callback) {
         //Check for word in mongo
         //If found, increment, if not, create
+        // console.log('item.word: ', item.word, typeof item.word);
         Word.findOne({word: item.word}, function(err, word) {
           if(err) {
             console.log(err);
@@ -84,13 +94,13 @@ router.get('/search', function(req, res) {
           console.log('Async series completed successfully.');
         }
       });
-
+      console.log('WORDS LENGTH: ', processed.words.length);
       res.send(processed);
     }
   });
 
   //Helper function to tally the frequencies of an array of words.
-  //Packages them into WordNode objects and adds them to Mongo if necessary.
+  //Packages them into WordNode objects. Doesn't touch the DB.
   function addWords(inputArr, outputArr, valence) {
     for(var i = 0; i < inputArr.length; i++) {
       var found = false;
@@ -106,21 +116,20 @@ router.get('/search', function(req, res) {
       }
     }
   }
-
-  //Return an object of word frequencies
-  function processSentiment(text) {
-    var analyzed = sentiment(text);
-    var output = {
-      score: analyzed.score,
-      comparative: analyzed.comparative.toFixed(2),
-      words: []
-    };
-    addWords(analyzed.positive, output.words, 'positive');
-    addWords(analyzed.negative, output.words, 'negative');
-    return output;
-  }
-
 });
+
+//Return an object of word frequencies
+//Takes output from Sentiment module
+function processSentiment(analyzed) {
+  var output = {
+    score: analyzed.score,
+    comparative: analyzed.comparative.toFixed(2),
+    words: []
+  };
+  addWords(analyzed.positive, output.words, 'positive');
+  addWords(analyzed.negative, output.words, 'negative');
+  return output;
+}
 
 //Determine if the search term is already in the db
 function searchExists(searchTerm) {
