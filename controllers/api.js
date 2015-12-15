@@ -2,6 +2,8 @@ var express = require('express');
 var request = require('request');
 var sentiment = require('sentiment');
 var router = express.Router();
+var Word = require('../models/word');
+var Search = require('../models/search');
 
 var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=';
 
