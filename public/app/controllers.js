@@ -6,4 +6,7 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
         $scope.data = data.words;
       });
     };
+  }])
+  .controller('WordCtrl', ['$scope', '$http', function($scope, $http) {
+
   }]);
