@@ -10,6 +10,16 @@ var async = require('async');
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/wiki');
 var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=';
 
+router.get('/words', function(req, res) {
+  Word.find({}).sort({value: 1}).limit(10).exec(function(err, words) {
+    if(err) {
+      return res.status(500).send(err);
+    } else {
+      res.send(words);
+    }
+  });
+});
+
 router.get('/search', function(req, res) {
   request(url + req.query.q, function(err, response, body) {
     function storeWords() {
