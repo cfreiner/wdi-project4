@@ -10,38 +10,7 @@ var async = require('async');
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/wiki');
 var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=';
 
-//Helper function to update the Mongo database when processing words
-// function incrementMongoWord(inputWord, valence) {
-//   Word.findOne(function(err, word) {
-//     console.log(word);
-//     if(err) {
-//       console.log(err);
-//     } else {
-//       if(word) {
-//         console.log(word);
-//         Word.findByIdAndUpdate(word.id, {value: word.value + 1}, function(err, word) {
-//           if(err) {
-//             console.log(err);
-//           } else {
-//             console.log('Updated: ', word.word, word.value);
-//           }
-//         });
-//       } else {
-//         var newWord = new Word(new WordNode(inputWord, valence));
-//         newWord.save(function(err) {
-//           if (err) {
-//             return res.send(err);
-//           }
-//         });
-//       }
-//     }
-//   });
-// }
-
 router.get('/search', function(req, res) {
-  var duplicateSearch = searchExists() ? true : false;
-  console.log('Duplicate: ', duplicateSearch);
-
   request(url + req.query.q, function(err, response, body) {
     function storeWords() {
       var pos = analyzed.positive.map(function(item) {
@@ -156,43 +125,6 @@ function processSentiment(analyzed) {
   addWords(analyzed.positive, output.words, 'positive');
   addWords(analyzed.negative, output.words, 'negative');
   return output;
-}
-
-//Determine if the search term is already in the db
-function checkSearch(searchTerm) {
-  var exists = false;
-  Search.findOne({search: searchTerm}, function(err, result) {
-    if (err) {
-      console.log(err);
-      return true;
-    } else if(result) {
-      Search.findByIdAndUpdate(result.id, {value: result.value + 1}, function(err, search) {
-
-      })
-      console.log('SEARCHEXISTS TRUE: ', result);
-      return true;
-    } else {
-      console.log('SEARCHEXISTS FALSE', result);
-      return false;
-    }
-  });
-}
-
-//Determine if the search term is already in the db
-function searchExists(searchTerm) {
-  var exists = false;
-  Search.findOne({'search': searchTerm}, function(err, result) {
-    if (err) {
-      console.log(err);
-      return true;
-    } else if(result) {
-      console.log('SEARCHEXISTS TRUE: ', result);
-      return true;
-    } else {
-      console.log('SEARCHEXISTS FALSE', result);
-      return false;
-    }
-  });
 }
 
 //Pull just the content of the Wikipedia page
