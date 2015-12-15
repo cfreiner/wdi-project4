@@ -67,7 +67,7 @@ router.get('/search', function(req, res) {
                 }
               });
             } else {
-              var newWord = new Word(new WordNode(inputWord, valence));
+              var newWord = new Word(new WordNode(item.word, valence));
               newWord.save(function(err) {
                 if (err) {
                   return res.send(err);

@@ -52,7 +52,6 @@ angular.module('D3Directives', ['D3Services'])
               .append("g")
               .attr("class", "node")
               .attr("transform", function(d) {
-                console.log('Coords:', d.x, d.y);
                 return "translate(" + d.x + "," + d.y + ")";
               });
 
