@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var Word = require('../models/word');
 var Search = require('../models/search');
 
-moongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/wiki');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/wiki');
 var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=';
 
 router.get('/search', function(req, res) {
@@ -56,6 +56,7 @@ router.get('/search', function(req, res) {
 
 });
 
+//Determine if the search term is already in the db
 function searchExists(searchTerm) {
   Search.findOne({search: searchTerm}, function(err, result) {
     if (err) {
@@ -79,8 +80,10 @@ function getWikiText(wikiJSON) {
   return result;
 }
 
-
+//Helper function to update the Mongo database when processing words
 function incrementMongoWord(inputWord, valence) {
+  //Use findByIdAndUpdate without findOne?
+  //Create where clause first, then find one
   Word.findOne({word: inputWord}, function(err, word) {
     if(err) {
       console.log(err);
