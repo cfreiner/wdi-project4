@@ -96,7 +96,7 @@ router.get('/search', function(req, res) {
       var analyzed = sentiment(text);
       var processed = processSentiment(analyzed);
 
-      Search.findOne({search: searchTerm}, function(err, result) {
+      Search.findOne({search: req.query.q}, function(err, result) {
         if (err) {
           console.log(err);
         } else if(result) {
@@ -108,7 +108,13 @@ router.get('/search', function(req, res) {
           });
           console.log('SEARCHEXISTS TRUE: ', result);
         } else {
-          //Only hit my DB if it is a new search
+          Search.create({
+            search: req.query.q,
+            value: 1
+          }, function(err, newSearch) {
+            console.log('Added new search: ', newSearch.search);
+          });
+          //Only hit my DB to store words if it is a new search
           storeWords();
           console.log('SEARCHEXISTS FALSE', result);
         }
