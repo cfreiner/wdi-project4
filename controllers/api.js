@@ -89,7 +89,8 @@ router.get('/search', function(req, res) {
         } else {
           Search.create({
             search: req.query.q,
-            value: 1
+            value: 1,
+            score: analyzed.score
           }, function(err, newSearch) {
             console.log('Added new search: ', newSearch.search);
           });
