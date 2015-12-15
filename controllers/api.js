@@ -11,6 +11,7 @@ var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop
 
 router.get('/search', function(req, res) {
   var duplicateSearch = searchExists() ? true : false;
+  console.log('Duplicate: ', duplicateSearch);
 
   request(url + req.query.q, function(err, response, body) {
     if(!err && response.statusCode == 200) {
@@ -58,13 +59,15 @@ router.get('/search', function(req, res) {
 
 //Determine if the search term is already in the db
 function searchExists(searchTerm) {
-  Search.findOne({search: searchTerm}, function(err, result) {
+  Search.findOne({'search': searchTerm}, function(err, result) {
     if (err) {
       console.log(err);
       return true;
     } else if(result) {
+      console.log('SEARCHEXISTS RESULT: ', result);
       return true;
     } else {
+      console.log('SEARCHEXISTS FALSE', result);
       return false;
     }
   });
@@ -82,14 +85,13 @@ function getWikiText(wikiJSON) {
 
 //Helper function to update the Mongo database when processing words
 function incrementMongoWord(inputWord, valence) {
-  //Use findByIdAndUpdate without findOne?
-  //Create where clause first, then find one
-  Word.findOne({word: inputWord}, function(err, word) {
+  Word.findOne(function(err, word) {
+    console.log(word);
     if(err) {
       console.log(err);
     } else {
-      console.log('WORD: ', word);
       if(word) {
+        console.log(word);
         Word.findByIdAndUpdate(word.id, {value: word.value + 1}, function(err, word) {
           if(err) {
             console.log(err);
