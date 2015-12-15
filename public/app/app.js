@@ -5,9 +5,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: '/app/views/search.html',
     controller: 'SearchCtrl'
   })
-  .when('/compiled', {
-    templateUrl: '/app/views/compiled.html',
-    controller: 'CompiledCtrl'
+  .when('/words', {
+    templateUrl: '/app/views/words.html',
+    controller: 'WordCtrl'
   })
   .otherwise({
     templateUrl: '/app/views/404.html'

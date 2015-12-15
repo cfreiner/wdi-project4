@@ -6,4 +6,13 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
         $scope.data = data.words;
       });
     };
+  }])
+  .controller('WordCtrl', ['$scope', 'Word', function($scope, Word) {
+    $scope.words = [];
+    $scope.score = 0;
+    Word.query(function success(data) {
+      $scope.words = data;
+    }, function error(data) {
+      console.log('Error: ', data);
+    });
   }]);
