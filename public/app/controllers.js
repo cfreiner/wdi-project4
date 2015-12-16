@@ -1,8 +1,24 @@
 angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
   .controller('SearchCtrl', ['$scope', 'Article', '$window', function($scope, Article, $window) {
+    $scope.badSearch = false;
+    $scope.cap = function(str) {
+      return str.split(' ').map(function(item) {
+        if(item === 'of') {
+          return item;
+        } else {
+          return item.charAt(0).toUpperCase() + item.substr(1);
+        }
+      }).join(' ');
+    };
     $scope.search = function(q) {
-      $scope.title = 'Article: ' + q;
+      q = $scope.cap(q);
       Article.get({q:q}, function(data) {
+        if(data.status === 400){
+          $scope.badSearch = true;
+          return;
+        }
+        $scope.badSearch = false;
+        $scope.title = 'Article: ' + q;
         $scope.data = data.words;
         $scope.score = 'Score: ' + data.score;
       });

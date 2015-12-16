@@ -2,9 +2,10 @@
   <form ng-submit="search(query)">
     <input type="text" ng-model="query">
   </form>
-  <h1 class="center">{{title}}</h1>
-  <h2 class="center">{{score}}</h2>
+  <h3 ng-show="badSearch">Article not found! Try a different query.</h3>
+  <h1 ng-hide="badSearch" class="center">{{title}}</h1>
+  <h2 ng-hide="badSearch" class="center">{{score}}</h2>
   <div>
-    <bubble-chart data="data"></bubble-chart>
+    <bubble-chart ng-hide="badSearch" data="data"></bubble-chart>
   </div>
 </div>
