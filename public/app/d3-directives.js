@@ -33,10 +33,14 @@ angular.module('D3Directives', ['D3Services'])
             //Clear the existing SVG
             svg.selectAll('*').remove();
 
-            if (!data) return;
-
-            var diameter = window.innerWidth * 0.89;
-            console.log(svg.node().getBBox());
+            //Exit if no data is passed in
+            if (!data) {
+              return;
+            }
+            // var diameter = window.innerWidth * 0.89;
+            // console.log(svg.node().getBBox());
+            var parentWidth = svg.node().parentNode.getBoundingClientRect().width;
+            var diameter = parentWidth * 0.89;
 
             //Create bubble chart layout
             var bubble = d3.layout.pack()
