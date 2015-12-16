@@ -65,26 +65,26 @@ angular.module('D3Directives', ['D3Services'])
               .attr('r', 5)
               .transition()
               .duration(function() {
-                return Math.floor((Math.random() * 1500) + 500);
+                return Math.floor((Math.random() * 1250) + 250);
               })
               .attr("r", function(d) { return d.r; })
-              .attr("class", function(d) { return d.valence; });
+              .attr("class", function(d) { return d.valence; })
+              .style("stroke-width", "1px");
 
             node.append("text")
               .text(function(d) { return d.word; })
               .style("font-size", 1)
               .transition()
               .duration(function() {
-                return Math.floor((Math.random() * 2000) + 500);
+                return Math.floor((Math.random() * 1500) + 500);
               })
               .style("font-size", function(d) { return (d.r/2.2); })
               .style("text-anchor", "middle");
 
             var computedHeight = svg.node().getBBox().height;
             bubble.size([computedHeight, computedHeight]);
-            // svg.select("g")
-            //   .attr('class', 'node center')
-            //   .attr('transform', '');
+            svg.select("circle")
+              .style('stroke', 'none');
 
           };
 
