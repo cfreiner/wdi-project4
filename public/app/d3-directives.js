@@ -33,7 +33,10 @@ angular.module('D3Directives', ['D3Services'])
             //Clear the existing SVG
             svg.selectAll('*').remove();
 
-            var diameter = window.innerWidth * 0.75;
+            if (!data) return;
+
+            var diameter = window.innerWidth * 0.89;
+            console.log(svg.node().getBBox());
 
             //Create bubble chart layout
             var bubble = d3.layout.pack()
@@ -59,13 +62,30 @@ angular.module('D3Directives', ['D3Services'])
               .text(function(d) { return d.word; });
 
             node.append("circle")
+              .attr('r', 5)
+              .transition()
+              .duration(function() {
+                return Math.floor((Math.random() * 1500) + 500);
+              })
               .attr("r", function(d) { return d.r; })
               .attr("class", function(d) { return d.valence; });
 
             node.append("text")
               .text(function(d) { return d.word; })
-              .style("font-size", function(d) { return (d.r/2); })
+              .style("font-size", 1)
+              .transition()
+              .duration(function() {
+                return Math.floor((Math.random() * 2000) + 500);
+              })
+              .style("font-size", function(d) { return (d.r/2.2); })
               .style("text-anchor", "middle");
+
+            var computedHeight = svg.node().getBBox().height;
+            bubble.size([computedHeight, computedHeight]);
+            // svg.select("g")
+            //   .attr('class', 'node center')
+            //   .attr('transform', '');
+
           };
 
         });
