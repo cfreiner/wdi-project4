@@ -34,13 +34,34 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     });
   }])
   .controller('VersusCtrl', ['$scope', 'Article', function($scope, Article) {
+    $scope.badSearchLeft = false;
+    $scope.badSearchRight = false;
+    $scope.cap = function(str) {
+      return str.split(' ').map(function(item) {
+        if(item === 'of') {
+          return item;
+        } else {
+          return item.charAt(0).toUpperCase() + item.substr(1);
+        }
+      }).join(' ');
+    };
     $scope.search = function(q, side) {
       Article.get({q:q}, function(data) {
         if(side === 'left') {
+          if(data.status === 400){
+            $scope.badSearchLeft = true;
+            return;
+          }
+          $scope.badSearchLeft = false;
           $scope.titleLeft = 'Article: ' + q;
           $scope.dataLeft = data.words;
           $scope.scoreLeft = 'Score: ' + data.score;
         } else if(side === 'right') {
+          if(data.status === 400){
+            $scope.badSearchRight = true;
+            return;
+          }
+          $scope.badSearchLeft = false;
           $scope.titleRight = 'Article: ' + q;
           $scope.dataRight = data.words;
           $scope.scoreRight = 'Score: ' + data.score;
