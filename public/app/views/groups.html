@@ -1,12 +1,17 @@
 <div>
-  <h1>Pick a group</h1>
-  <select ng-model="group">
-    <option value="qbs">NFL Quarterbacks</option>
-    <option value="presidents">U.S. Presidents</option>
-    <option value="languages">Programming Languages</option>
-    <option value="all">All searches</option>
-  </select>
+  <div class="input-field">
+    <select ng-model="group">
+      <option value="qbs">NFL Quarterbacks</option>
+      <option value="presidents">U.S. Presidents</option>
+      <option value="languages">Programming Languages</option>
+      <option value="all">All searches</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>
+  <div class="input-field">
+    <button ng-click="getGroup(group)">Click me</button>
+  </div>
   <ol>
-    <li ng-repeat="item in data">{{item.search}}: {{item.score}}</li>
+    <li ng-repeat="item in data | orderBy: '-score'">{{item.search}}: {{item.score}}</li>
   </ol>
 </div>

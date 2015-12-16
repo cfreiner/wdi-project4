@@ -6,5 +6,5 @@ angular.module('WikiServices', ['ngResource'])
     return $resource('/api/words/');
   }])
   .factory('Search', ['$resource', function($resource) {
-    return $resource('/api/groups/:name');
+    return $resource('/api/group/:name');
   }]);

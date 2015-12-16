@@ -21,7 +21,7 @@ router.get('/words', function(req, res) {
   });
 });
 
-router.get('/group/:name', function() {
+router.get('/group/:name', function(req, res) {
   var group = groups[req.params.name];
   var scores = [];
   async.each(group, function(item, callback) {
@@ -30,6 +30,7 @@ router.get('/group/:name', function() {
         return res.status(500).send(err);
       } else {
         scores.push(result);
+        callback();
       }
     });
   }, function(err) {

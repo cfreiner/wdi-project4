@@ -13,6 +13,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: '/app/views/versus.html',
     controller: 'VersusCtrl'
   })
+  .when('/groups', {
+    templateUrl: '/app/views/groups.html',
+    controller: 'GroupCtrl'
+  })
   .otherwise({
     templateUrl: '/app/views/404.html'
   });

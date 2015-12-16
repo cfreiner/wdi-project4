@@ -71,10 +71,14 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     };
   }])
   .controller('GroupCtrl', ['$scope', 'Search', function($scope, Search) {
-    $scope.group = [];
+    $scope.data = [];
+    $scope.group = 'qbs';
+    // $scope.$watch('group', function(newVal, oldVal) {
+    //   $scope.getGroup(newVal);
+    // });
     $scope.getGroup = function(group) {
       Search.query({name: group}, function(data) {
-        $scope.group = data;
+        $scope.data = data;
       });
     };
   }]);
