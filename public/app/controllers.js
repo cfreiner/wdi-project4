@@ -46,6 +46,7 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
       }).join(' ');
     };
     $scope.search = function(q, side) {
+      q = $scope.cap(q);
       Article.get({q:q}, function(data) {
         if(side === 'left') {
           if(data.status === 400){
