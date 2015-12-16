@@ -81,8 +81,11 @@ angular.module('D3Directives', ['D3Services'])
               .style("font-size", function(d) { return (d.r/2.2); })
               .style("text-anchor", "middle");
 
-            var computedHeight = svg.node().getBBox().height;
-            bubble.size([computedHeight, computedHeight]);
+            // var computedHeight = svg.node().getBBox().height;
+            // var computedWidth = svg.node().getBBox().width;
+            // bubble.size([computedWidth, computedHeight]);
+            // svg.style('width', computedWidth)
+            //   .style('height', computedHeight);
             svg.select("circle")
               .style('stroke', 'none');
 

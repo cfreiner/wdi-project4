@@ -9,6 +9,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: '/app/views/words.html',
     controller: 'WordCtrl'
   })
+  .when('/versus', {
+    templateUrl: '/app/views/versus.html',
+    controller: 'VersusCtrl'
+  })
   .otherwise({
     templateUrl: '/app/views/404.html'
   });

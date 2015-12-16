@@ -71,7 +71,12 @@ router.get('/search', function(req, res) {
     } //End store function
 
     if(!err && response.statusCode == 200) {
-      var text = getWikiText(JSON.parse(body));
+      var parsed = JSON.parse(body);
+      if(parsed.query.pages['-1']) {
+        console.log('In the bad request if statement');
+        return res.status(200).send({status: 400});
+      }
+      var text = getWikiText(parsed);
       var analyzed = sentiment(text);
       var processed = processSentiment(analyzed);
 
