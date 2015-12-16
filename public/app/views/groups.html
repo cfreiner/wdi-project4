@@ -1,0 +1,12 @@
+<div>
+  <h1>Pick a group</h1>
+  <select ng-model="group">
+    <option value="qbs">NFL Quarterbacks</option>
+    <option value="presidents">U.S. Presidents</option>
+    <option value="languages">Programming Languages</option>
+    <option value="all">All searches</option>
+  </select>
+  <ol>
+    <li ng-repeat="item in data">{{item.search}}: {{item.score}}</li>
+  </ol>
+</div>
