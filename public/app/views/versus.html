@@ -1,18 +1,23 @@
 <div class="row">
   <div class="col s6">
-    <form ng-submit="search(queryLeft, 'left')">
+    <form id="search-form" ng-submit="search(queryLeft, 'left')">
       <input type="text" ng-model="queryLeft">
     </form>
-    <h1 class="center">{{titleLeft}}</h1>
-    <h2 class="center">{{scoreLeft}}</h2>
-    <bubble-chart data="dataLeft"></bubble-chart>
+    <h3 ng-show="badSearchLeft" class="center">Article not found! Try a different query.</h3>
+    <!-- <h1 ng-hide="badSearch" class="center">{{title}}</h1> -->
+    <h2 ng-hide="badSearch" class="center">{{scoreLeft}}</h2>
+    <div>
+      <bubble-chart ng-hide="badSearchLeft" data="dataLeft"></bubble-chart>
+    </div>
   </div>
   <div class="col s6">
-    <form ng-submit="search(queryRight, 'right')">
+    <form id="search-form" ng-submit="search(queryRight, 'right')">
       <input type="text" ng-model="queryRight">
     </form>
-    <h1 class="center">{{titleRight}}</h1>
-    <h2 class="center">{{scoreRight}}</h2>
-    <bubble-chart data="dataRight"></bubble-chart>
-  </div>
+    <h3 ng-show="badSearchRight" class="center">Article not found! Try a different query.</h3>
+    <!-- <h1 ng-hide="badSearch" class="center">{{title}}</h1> -->
+    <h2 ng-hide="badSearch" class="center">{{scoreRight}}</h2>
+    <div>
+      <bubble-chart ng-hide="badSearchRight" data="dataRight"></bubble-chart>
+    </div>
 </div>
