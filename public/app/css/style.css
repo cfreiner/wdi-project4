@@ -14,6 +14,10 @@
 }
 
 /* SVG Styling */
+svg {
+  margin-left: 4.5%;
+}
+
 circle {
   fill: white;
   fill-opacity: .75;
