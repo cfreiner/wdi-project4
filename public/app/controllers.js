@@ -71,6 +71,11 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     };
   }])
   .controller('GroupCtrl', ['$scope', 'Search', function($scope, Search) {
+    $(document).ready(function() {
+      console.log('Doc ready function');
+      $('select').material_select();
+    });
+
     $scope.data = [];
     $scope.group = 'qbs';
     // $scope.$watch('group', function(newVal, oldVal) {
