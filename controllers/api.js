@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var Word = require('../models/word');
 var Search = require('../models/search');
 var async = require('async');
+var groups = require('./groups');
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/wiki');
 var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=';
@@ -16,6 +17,26 @@ router.get('/words', function(req, res) {
       return res.status(500).send(err);
     } else {
       res.send(words);
+    }
+  });
+});
+
+router.get('/group/:name', function() {
+  var group = groups[req.params.name];
+  var scores = [];
+  async.each(group, function(item, callback) {
+    Search.findOne({search: item}, function(err, result) {
+      if(err) {
+        return res.status(500).send(err);
+      } else {
+        scores.push(result);
+      }
+    });
+  }, function(err) {
+    if(err) {
+      return res.status(500).send(err);
+    } else {
+      res.send(scores);
     }
   });
 });
