@@ -69,4 +69,12 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
         }
       });
     };
+  }])
+  .controller('GroupCtrl', ['$scope', 'Search', function($scope, Search) {
+    $scope.group = [];
+    $scope.getGroup = function(group) {
+      Search.query({name: group}, function(data) {
+        $scope.group = data;
+      });
+    };
   }]);
