@@ -72,9 +72,15 @@ router.get('/search', function(req, res) {
 
     if(!err && response.statusCode == 200) {
       var parsed = JSON.parse(body);
-      if(parsed.query.pages['-1']) {
+      var pages = parsed.query.pages;
+      if(pages['-1']) {
         console.log('In the bad request if statement');
         return res.status(200).send({status: 400});
+      }
+      for(var key in pages) {
+        if(pages[key].revisions[0]['*'].substr(0,9) === '#REDIRECT') {
+          return res.status(200).send({status: 400});
+        }
       }
       var text = getWikiText(parsed);
       var analyzed = sentiment(text);
