@@ -70,7 +70,11 @@ var groups = {
     'Bill Clinton',
     'George W. Bush',
     'Barack Obama'
-    ]
+  ],
+    languages: [
+    'George Washington',
+    'Tom Brady'
+  ]
 };
 
 module.exports = groups;

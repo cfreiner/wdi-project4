@@ -71,19 +71,26 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     };
   }])
   .controller('GroupCtrl', ['$scope', 'Search', function($scope, Search) {
-    $(document).ready(function() {
-      console.log('Doc ready function');
-      $('select').material_select();
-    });
+    // $(document).ready(function() {
+    //   $('select').material_select();
+    // });
+
+    // $scope.initSelect = function() {
+    //   $('select').material_select();
+    // };
 
     $scope.data = [];
     $scope.group = 'qbs';
-    // $scope.$watch('group', function(newVal, oldVal) {
-    //   $scope.getGroup(newVal);
-    // });
+    $scope.$watch('group', function(newVal, oldVal) {
+      console.log('in watch');
+      $scope.getGroup(newVal);
+    });
     $scope.getGroup = function(group) {
       Search.query({name: group}, function(data) {
         $scope.data = data;
       });
+    };
+    $scope.setGroup = function(group) {
+      $scope.group = group;
     };
   }]);
