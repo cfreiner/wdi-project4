@@ -8,7 +8,7 @@ circle {
   fill: white;
   fill-opacity: .75;
   stroke: rgb(31, 119, 180);
-  stroke-width: 1px;
+  /*stroke-width: 1px;*/
 }
 
 .leaf circle {
