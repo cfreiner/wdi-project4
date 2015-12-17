@@ -115,7 +115,12 @@ i {
 @media (max-width: 600px) {
   .title {
     display: block;
+  }
+  .nav-link {
     margin: auto;
+  }
+  select {
+    font-size: 2em;
   }
 }
 
