@@ -25,11 +25,12 @@ angular.module('D3Directives', ['D3Services'])
 
           // Watch for data, re-render on change
           scope.$watchCollection('data', function(newVals, oldVals) {
+            console.log('NEW: ', newVals);
+            console.log('OLD: ', oldVals);
             scope.render(scope.data);
           });
 
           scope.render = function(data) {
-
             //Clear the existing SVG
             svg.selectAll('*').remove();
 

@@ -9,7 +9,7 @@
     <h3 ng-show="badSearch" class="text-center">Article not found! Try a different query.</h3>
     <h2 ng-hide="badSearch" class="text-center">{{score}}</h2>
     <div>
-      <bubble-chart ng-hide="badSearch" data="data"></bubble-chart>
+      <bubble-chart ng-if="!badSearch" data="data"></bubble-chart>
     </div>
   </div>
 </div>

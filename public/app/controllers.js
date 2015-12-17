@@ -13,14 +13,21 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     $scope.search = function(q) {
       q = $scope.cap(q);
       Article.get({q:q}, function(data) {
-        if(data.status === 400){
-          $scope.badSearch = true;
-          return;
-        }
+        // if(data.status === 400){
+        //   $scope.badSearch = true;
+        //   console.log(data);
+        //   console.log($scope.data);
+        //   return;
+        // }
         $scope.badSearch = false;
         $scope.title = 'Article: ' + q;
         $scope.data = data.words;
         $scope.score = 'Score: ' + data.score;
+      }, function(error) {
+        $scope.badSearch = true;
+        console.log(error);
+        console.log($scope.data);
+        return;
       });
     };
   }])

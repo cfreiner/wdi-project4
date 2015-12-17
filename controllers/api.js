@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/wiki');
 var url = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles=';
 
 router.get('/words', function(req, res) {
-  Word.find({}).sort({value: -1}).limit(250).exec(function(err, words) {
+  Word.find({}).sort({value: -1}).limit(200).exec(function(err, words) {
     if(err) {
       return res.status(500).send(err);
     } else {
@@ -96,11 +96,11 @@ router.get('/search', function(req, res) {
       var parsed = JSON.parse(body);
       var pages = parsed.query.pages;
       if(pages['-1']) {
-        return res.status(200).send({status: 400});
+        return res.status(400).send();
       }
       for(var key in pages) {
         if(pages[key].revisions[0]['*'].substr(0,9) === '#REDIRECT' || pages[key].revisions[0]['*'].substr(0,100).indexOf('may refer to') !== -1) {
-          return res.status(200).send({status: 400});
+          return res.status(400).send();
         }
       }
       var text = getWikiText(parsed);
