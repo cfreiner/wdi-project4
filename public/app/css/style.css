@@ -8,15 +8,15 @@
   margin: auto;
 }
 
-.search-form-half {
+/*.search-form-half {
   width: 100%;
   margin: auto;
-}
+}*/
 
 .search {
   width: 80%;
   font-size: 4rem;
-  letter-spacing: 1rem;
+  letter-spacing: 0.75rem;
   margin: auto;
   border-style: none;
 }
@@ -35,6 +35,11 @@
     -moz-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
         box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
 
+}
+
+.half {
+  width: 100%;
+  margin: auto;
 }
 
 i {

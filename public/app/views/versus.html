@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-6 col-lg-6">
-    <form class="search-form-half" ng-submit="search(queryLeft, 'left')">
-      <input class="search" type="text" ng-model="queryLeft">
-      <a ng-click="search(queryLeft, 'left')"><i class="fa fa-3x fa-search"></i></a>
-    </form>
+    <div class="card search-card half">
+      <form class="text-center" ng-submit="search(queryLeft, 'left')">
+        <input class="search" type="text" ng-model="queryLeft">
+        <a ng-click="search(queryLeft, 'left')"><i class="fa fa-3x fa-search"></i></a>
+      </form>
+    </div>
     <h3 ng-show="badSearchLeft" class="text-center">Article not found! Try a different query.</h3>
     <!-- <h1 ng-hide="badSearch" class="center">{{title}}</h1> -->
     <h2 ng-hide="badSearch" class="text-center">{{scoreLeft}}</h2>
@@ -12,10 +14,12 @@
     </div>
   </div>
   <div class="col-md-6 col-lg-6">
-    <form class="search-form-half" ng-submit="search(queryRight, 'right')">
-      <input class="search" type="text" ng-model="queryRight">
-      <a ng-click="search(queryRight, 'right')"><i class="fa fa-3x fa-search"></i></a>
-    </form>
+    <div class="card search-card half">
+      <form class="text-center" ng-submit="search(queryRight, 'right')">
+        <input class="search" type="text" ng-model="queryRight">
+        <a ng-click="search(queryRight, 'right')"><i class="fa fa-3x fa-search"></i></a>
+      </form>
+    </div>
     <h3 ng-show="badSearchRight" class="text-center">Article not found! Try a different query.</h3>
     <!-- <h1 ng-hide="badSearch" class="text-center">{{title}}</h1> -->
     <h2 ng-hide="badSearch" class="text-center">{{scoreRight}}</h2>
