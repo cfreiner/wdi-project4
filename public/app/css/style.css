@@ -108,6 +108,7 @@ i {
 
 .title {
   display: inline-block;
+  text-align: center;
   margin: 0 50px 0 50px;
 }
 
