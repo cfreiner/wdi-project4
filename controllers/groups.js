@@ -17,7 +17,6 @@ var groups = {
     'Ryan Tannehill',
     'Sam Bradford',
     'Colin Kaepernick',
-    'Jay Cutler',
     'Carson Palmer',
     'Alex Smith',
     'Teddy Bridgewater',
