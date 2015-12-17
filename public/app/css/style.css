@@ -34,7 +34,6 @@ body {
 }
 
 .search-card {
-  /*width: 65%;*/
   padding: 10px 0 10px 0;
   box-sizing: border-box;
   border-radius: 3px;
@@ -46,7 +45,6 @@ body {
 }
 
 .group {
-  /*width: 25%;*/
   margin: auto;
   -webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
@@ -62,7 +60,6 @@ body {
 }
 
 .group-select {
-  /*width: 30%;*/
   font-size: 3rem;
   margin: auto;
 }
@@ -87,7 +84,6 @@ i {
 /* Custom nav */
 
 .circle-nav {
-  /*height: 100px;*/
   overflow: hidden;
   margin-bottom: 2%;
 }
@@ -113,6 +109,12 @@ i {
 .title {
   display: inline-block;
   margin: 0 50px 0 50px;
+}
+
+@media (max-width: 600px) {
+  .title {
+    display: block;
+  }
 }
 
 .active {

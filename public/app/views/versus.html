@@ -20,7 +20,6 @@
       </form>
     </div>
     <h3 ng-show="badSearchRight" class="text-center">Article not found! Try a different query.</h3>
-    <!-- <h1 ng-hide="badSearch" class="text-center">{{title}}</h1> -->
     <h2 ng-hide="badSearchRight" class="text-center">{{scoreRight}}</h2>
     <div>
       <bubble-chart ng-if="!badSearchRight" data="dataRight"></bubble-chart>
