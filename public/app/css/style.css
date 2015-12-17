@@ -115,7 +115,7 @@ i {
 @media (max-width: 600px) {
   .title {
     display: block;
-    margin: 0 25px 0 25px;
+    margin: auto;
   }
 }
 
