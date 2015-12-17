@@ -96,11 +96,10 @@ router.get('/search', function(req, res) {
       var parsed = JSON.parse(body);
       var pages = parsed.query.pages;
       if(pages['-1']) {
-        console.log('In the bad request if statement');
         return res.status(200).send({status: 400});
       }
       for(var key in pages) {
-        if(pages[key].revisions[0]['*'].substr(0,9) === '#REDIRECT') {
+        if(pages[key].revisions[0]['*'].substr(0,9) === '#REDIRECT' || pages[key].revisions[0]['*'].substr(0,100).indexOf('may refer to') !== -1) {
           return res.status(200).send({status: 400});
         }
       }
