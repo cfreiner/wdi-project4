@@ -1,8 +1,8 @@
 <div>
   <h1>{{group}}</h1>
   <form>
-    <div class="input-field" ng-model="group">
-      <select>
+    <div class="form-group">
+      <select ng-model="group">
         <option value="qbs">NFL Quarterbacks</option>
         <option value="presidents">U.S. Presidents</option>
         <option value="languages">Programming Languages</option>
@@ -10,7 +10,7 @@
       </select>
     </div>
   </form>
-  <div class="input-field">
+  <div class="form-group">
     <button ng-click="initSelect()">Test</button>
     <button ng-click="getGroup(group)">Click me</button>
   </div>

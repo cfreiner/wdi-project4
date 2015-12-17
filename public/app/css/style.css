@@ -8,9 +8,9 @@
   margin: auto;
 }
 
-#search-field {
+.search {
   font-size: 2.5rem;
-  margin: 10px auto
+  margin: auto
 }
 
 /* SVG Styling */
