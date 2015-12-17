@@ -56,23 +56,31 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
       q = $scope.cap(q);
       Article.get({q:q}, function(data) {
         if(side === 'left') {
-          if(data.status === 400){
-            $scope.badSearchLeft = true;
-            return;
-          }
+          // if(data.status === 400){
+          //   $scope.badSearchLeft = true;
+          //   return;
+          // }
           $scope.badSearchLeft = false;
           $scope.titleLeft = 'Article: ' + q;
           $scope.dataLeft = data.words;
           $scope.scoreLeft = 'Score: ' + data.score;
         } else if(side === 'right') {
-          if(data.status === 400){
-            $scope.badSearchRight = true;
-            return;
-          }
-          $scope.badSearchLeft = false;
+          // if(data.status === 400){
+          //   $scope.badSearchRight = true;
+          //   return;
+          // }
+          $scope.badSearchRight = false;
           $scope.titleRight = 'Article: ' + q;
           $scope.dataRight = data.words;
           $scope.scoreRight = 'Score: ' + data.score;
+        }
+      }, function(error) {
+        if(side === 'left') {
+          $scope.badSearchLeft = true;
+          return;
+        } else if(side === 'right') {
+          $scope.badSearchRight = true;
+          return;
         }
       });
     };
