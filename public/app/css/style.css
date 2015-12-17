@@ -12,13 +12,7 @@ body {
   margin: auto;
 }
 
-/*.search-form-half {
-  width: 100%;
-  margin: auto;
-}*/
-
 .navbar {
-  /*background: rgba(70,130,180, 0.75);*/
   background: white;
 }
 
@@ -40,7 +34,7 @@ body {
 }
 
 .search-card {
-  width: 65%;
+  /*width: 65%;*/
   padding: 10px 0 10px 0;
   box-sizing: border-box;
   border-radius: 3px;
@@ -52,8 +46,11 @@ body {
 }
 
 .group {
-  width: 25%;
+  /*width: 25%;*/
   margin: auto;
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
+        box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
 }
 
 .group-card {
@@ -62,6 +59,16 @@ body {
   border-width: 1px;
   border-style: solid solid none solid;
   padding: 5px;
+}
+
+.group-select {
+  /*width: 30%;*/
+  font-size: 3rem;
+  margin: auto;
+}
+
+.group-select:focus {
+  box-shadow: none;
 }
 
 p {
@@ -106,6 +113,10 @@ i {
 .title {
   display: inline-block;
   margin: 0 50px 0 50px;
+}
+
+.active {
+  background-color: rgba(225, 0, 0, 0.75);
 }
 
 /* SVG Styling */

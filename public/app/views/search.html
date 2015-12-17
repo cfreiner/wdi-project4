@@ -1,13 +1,15 @@
-<div>
-  <div class="card search-card">
-    <form id="search-form" class="text-center" ng-submit="search(query)">
-      <input id="search-field" class="search" type="text" ng-model="query">
-      <a ng-click="search(query)"><i class="fa fa-4x fa-search"></i></a>
-    </form>
-  </div>
-  <h3 ng-show="badSearch" class="text-center">Article not found! Try a different query.</h3>
-  <h2 ng-hide="badSearch" class="text-center">{{score}}</h2>
-  <div>
-    <bubble-chart ng-hide="badSearch" data="data"></bubble-chart>
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="card search-card">
+      <form autocomplete="off" id="search-form" class="text-center" ng-submit="search(query)">
+        <input id="search-field" class="search" type="text" ng-model="query">
+        <a ng-click="search(query)"><i class="fa fa-4x fa-search"></i></a>
+      </form>
+    </div>
+    <h3 ng-show="badSearch" class="text-center">Article not found! Try a different query.</h3>
+    <h2 ng-hide="badSearch" class="text-center">{{score}}</h2>
+    <div>
+      <bubble-chart ng-hide="badSearch" data="data"></bubble-chart>
+    </div>
   </div>
 </div>
