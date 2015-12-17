@@ -14,7 +14,6 @@
     <button ng-click="initSelect()">Test</button>
     <button ng-click="getGroup(group)">Click me</button>
   </div>
-  <ol>
     <li ng-repeat="item in data | orderBy: '-score'">{{item.search}}: {{item.score}}</li>
   </ol>
 </div>
