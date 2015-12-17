@@ -10,11 +10,14 @@
       </select>
     </div>
   </form>
-  <div class="form-group">
-    <button ng-click="initSelect()">Test</button>
-    <button ng-click="getGroup(group)">Click me</button>
-  </div>
-  <ol>
-    <li ng-repeat="item in data | orderBy: '-score'">{{item.search}}: {{item.score}}</li>
-  </ol>
+    <div class="group">
+      <div class="card group-card" ng-repeat="item in data | orderBy: '-score' track by $index">
+        <div class="card-block">
+          <h4 class="card-title">{{$index + 1}}.) {{item.search}}</h4>
+        </div>
+        <div class="card-block">
+          <p>Score: {{item.score}}</p>
+        </div>
+      </div>
+    </div>
 </div>
