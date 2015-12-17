@@ -4,7 +4,7 @@
 }
 
 #search-form {
-  width: 60%;
+  width: 100%;
   margin: auto;
 }
 
@@ -18,11 +18,23 @@
   font-size: 4rem;
   letter-spacing: 1rem;
   margin: auto;
-  border-style: none none solid none;
+  border-style: none;
 }
 
 .search:focus {
   outline: none;
+}
+
+.search-card {
+  width: 65%;
+  padding: 10px 0 10px 0;
+  box-sizing: border-box;
+  border-radius: 3px;
+  margin: auto;
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
+        box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.75);
+
 }
 
 i {
