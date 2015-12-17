@@ -4,18 +4,29 @@
 }
 
 #search-form {
-  width: 40%;
+  width: 60%;
   margin: auto;
 }
 
 .search {
-  font-size: 2.5rem;
-  margin: auto
+  width: 80%;
+  font-size: 4rem;
+  letter-spacing: 1rem;
+  margin: auto;
+  border-style: none none solid none;
+}
+
+.search:focus {
+  outline: none;
+}
+
+i {
+  color: black;
 }
 
 /* SVG Styling */
 svg {
-  margin-left: 4.5%;
+  margin-left: 2.5%;
 }
 
 circle {
