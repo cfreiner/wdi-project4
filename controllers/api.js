@@ -58,17 +58,13 @@ router.get('/search', function(req, res) {
         //If found, increment, if not, create
         Word.findOne({word: item.word}, function(err, word) {
           if(err) {
-            console.log(err);
             callback(err);
           } else {
             if(word) {
-              console.log('Found word:', word);
               Word.findByIdAndUpdate(word.id, {value: word.value + 1}, function(err, word) {
                 if(err) {
-                  console.log(err);
                   callback(err);
                 } else {
-                  console.log('Updated: ', word.word, word.value);
                   callback();
                 }
               });
@@ -114,24 +110,19 @@ router.get('/search', function(req, res) {
           //Increment the search counter, but don't increment add words
           Search.findByIdAndUpdate(result.id, {value: result.value + 1}, function(err, search) {
             if(!err) {
-              console.log('Successfully incremented search value: ', search.search, search.value);
             }
           });
-          console.log('SEARCHEXISTS TRUE: ', result);
         } else {
           Search.create({
             search: req.query.q,
             value: 1,
             score: analyzed.score
           }, function(err, newSearch) {
-            console.log('Added new search: ', newSearch.search);
           });
           //Only hit my DB to store words if it is a new search
           storeWords();
-          console.log('SEARCHEXISTS FALSE', result);
         }
       });
-      console.log('WORDS LENGTH: ', processed.words.length);
       res.send(processed);
     } else {
       res.send('Wikimedia request failed: ', response.statusCode);

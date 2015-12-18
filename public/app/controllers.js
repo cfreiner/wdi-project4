@@ -4,7 +4,6 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     $scope.cap = function(str) {
       return str.split(' ').map(function(item) {
         if(item === 'of' || item.indexOf(')') !== -1) {
-          console.log(item);
           return item;
         } else {
           return item.charAt(0).toUpperCase() + item.substr(1);
@@ -14,20 +13,12 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     $scope.search = function(q) {
       q = $scope.cap(q);
       Article.get({q:q}, function(data) {
-        // if(data.status === 400){
-        //   $scope.badSearch = true;
-        //   console.log(data);
-        //   console.log($scope.data);
-        //   return;
-        // }
         $scope.badSearch = false;
         $scope.title = 'Article: ' + q;
         $scope.data = data.words;
         $scope.score = 'Score: ' + data.score;
       }, function(error) {
         $scope.badSearch = true;
-        console.log(error);
-        console.log($scope.data);
         return;
       });
     };
@@ -57,19 +48,11 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
       q = $scope.cap(q);
       Article.get({q:q}, function(data) {
         if(side === 'left') {
-          // if(data.status === 400){
-          //   $scope.badSearchLeft = true;
-          //   return;
-          // }
           $scope.badSearchLeft = false;
           $scope.titleLeft = 'Article: ' + q;
           $scope.dataLeft = data.words;
           $scope.scoreLeft = 'Score: ' + data.score;
         } else if(side === 'right') {
-          // if(data.status === 400){
-          //   $scope.badSearchRight = true;
-          //   return;
-          // }
           $scope.badSearchRight = false;
           $scope.titleRight = 'Article: ' + q;
           $scope.dataRight = data.words;
@@ -90,7 +73,6 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     $scope.data = [];
     $scope.group = 'qbs';
     $scope.$watch('group', function(newVal, oldVal) {
-      console.log('in watch');
       $scope.getGroup(newVal);
     });
     $scope.getGroup = function(group) {

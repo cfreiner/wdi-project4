@@ -25,8 +25,6 @@ angular.module('D3Directives', ['D3Services'])
 
           // Watch for data, re-render on change
           scope.$watchCollection('data', function(newVals, oldVals) {
-            console.log('NEW: ', newVals);
-            console.log('OLD: ', oldVals);
             scope.render(scope.data);
           });
 
@@ -38,8 +36,6 @@ angular.module('D3Directives', ['D3Services'])
             if (!data) {
               return;
             }
-            // var diameter = window.innerWidth * 0.89;
-            // console.log(svg.node().getBBox());
             var parentWidth = svg.node().parentNode.getBoundingClientRect().width;
             var diameter = parentWidth * 0.89;
 
@@ -86,11 +82,6 @@ angular.module('D3Directives', ['D3Services'])
               .style("font-size", function(d) { return (d.r/2.2); })
               .style("text-anchor", "middle");
 
-            // var computedHeight = svg.node().getBBox().height;
-            // var computedWidth = svg.node().getBBox().width;
-            // bubble.size([computedWidth, computedHeight]);
-            // svg.style('width', computedWidth)
-            //   .style('height', computedHeight);
             svg.select("circle")
               .style('stroke', 'none');
 
