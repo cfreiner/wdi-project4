@@ -22,6 +22,22 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
         return;
       });
     };
+
+    $scope.texttyping = ['Enter the title of a Wikipedia article to see how <span class="pos">positive</span> or <span class="neg">negative</span> the tone of the article is. Higher scores indicate more positive sentiment.'];
+    //TypedJS
+    $(function() {
+       $(document.getElementById("create-text")).typed({
+         strings: $scope.texttyping,
+         typeSpeed: 20,
+         startDelay: 1000,
+         contentType: "html",
+         showCursor: false,
+         backDelay: 1000,
+         backSpeed: 0,
+         cursorChar: " :"
+       });
+     });
+
   }])
   .controller('WordCtrl', ['$scope', 'Word', function($scope, Word) {
     $scope.words = [];
