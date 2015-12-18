@@ -3,7 +3,8 @@ angular.module('WikiCtrls', ['WikiServices', 'D3Directives'])
     $scope.badSearch = false;
     $scope.cap = function(str) {
       return str.split(' ').map(function(item) {
-        if(item === 'of') {
+        if(item === 'of' || item.indexOf(')') !== -1) {
+          console.log(item);
           return item;
         } else {
           return item.charAt(0).toUpperCase() + item.substr(1);
