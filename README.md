@@ -1,4 +1,5 @@
 #WDI Project 4: WikiSentiment
+![preview](/wiki.png)
 
 ## Technologies used
 Node.js
