@@ -83,6 +83,21 @@ i {
   color: black;
 }
 
+.intro {
+  font-size: 3rem;
+  margin-bottom: 25px;
+}
+
+.pos {
+  color: rgba(70,130,180, 0.75);
+  font-size: 1.5em;
+}
+
+.neg {
+  color: rgba(255,0,0, 0.75);
+  font-size: 1.5em;
+}
+
 /* Custom nav */
 
 .circle-nav {

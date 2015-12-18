@@ -1,4 +1,5 @@
 <div class="row">
+  <p ng-if="!data" class="intro">Enter the title of a Wikipedia article to see how <span class="pos">positive</span> or <span class="neg">negative</span> the tone of the article is. Higher scores indicate more positive sentiment.</p>
   <div class="col-xs-12 col-md-8 col-md-offset-2">
     <div class="card search-card">
       <form autocomplete="off" id="search-form" class="text-center" ng-submit="search(query)">
