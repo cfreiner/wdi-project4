@@ -46,7 +46,7 @@ var groups = {
     'Ulysses S. Grant',
     'Rutherford B. Hayes',
     'James A. Garfield',
-    'Chester Arthur',
+    'Chester A. Arthur',
     'Grover Cleveland',
     'Benjamin Harrison',
     'William McKinley',
@@ -65,7 +65,7 @@ var groups = {
     'Gerald Ford',
     'Jimmy Carter',
     'Ronald Reagan',
-    'George H.W. Bush',
+    'George H. W. Bush',
     'Bill Clinton',
     'George W. Bush',
     'Barack Obama'
