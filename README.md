@@ -2,15 +2,15 @@
 ![preview](/wiki.png)
 
 ## Technologies used
-Node.js
-Express.js
-MongoDB with Mongoose ORM
-Sentiment module for sentiment analysis
-Request for http requests
-Async for sequential processing
-AngularJS for front-end MVC
-d3js for data visualization
-Bootstrap for styling
+* Node.js
+* Express.js
+* MongoDB with Mongoose ORM
+* Sentiment module for sentiment analysis
+* Request for http requests
+* Async for sequential processing
+* AngularJS for front-end MVC
+* d3js for data visualization
+* Bootstrap for styling
 
 ## API's
 WikiMedia api for gathering data from Wikipedia
