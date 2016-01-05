@@ -1,6 +1,9 @@
 #WDI Project 4: WikiSentiment
 ![preview](/wiki.png)
 
+## Summary
+This is a data visualization and sentiment analysis app. It uses the WikiMedia API to query Wikipedia, then analyzes the text of articles using the Sentiment node module. Along with the sentiment analysis score, the app also provides a word cloud using d3js for its circle packing layout. Since Sentiment is already providing us with a list of positive an negative words, the word cloud is also color-coded. This way it visualizes both word frequency and word positivity or negativity.
+
 ## Technologies used
 * Node.js
 * Express.js
@@ -14,9 +17,6 @@
 
 ## API's
 WikiMedia api for gathering data from Wikipedia
-
-## Summary
-This is a data visualization and sentiment analysis app. It uses the WikiMedia API to query Wikipedia, then analyzes the text of articles using the Sentiment node module. Along with the sentiment analysis score, the app also provides a word cloud using d3js for its circle packing layout. Since Sentiment is already providing us with a list of positive an negative words, the word cloud is also color-coded. This way it visualizes both word frequency and word positivity or negativity.
 
 ## Implementation
 The back-end is Node and MongoDB. The front end uses Angular to hit my API and display the data using d3js.  D3 is packaged into its own service and injected where necessary. Right now the bubble chart is the only d3 layout I use, but this implementation makes it easy to create new directives for other types of charts.
